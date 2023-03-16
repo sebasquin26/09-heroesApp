@@ -3,14 +3,15 @@
 
 <div class="row">
     <div class="col text-right">
-        <button routerLink="/heroe/nuevo" class="btn btn-primary">
+        <button routerLink="/heroe/nuevo" 
+            class="btn btn-primary">
             <i class="fa fa-plus"></i>
                 agregar
         </button>
     </div>
 </div>
 
-<table class="table  mt-3">
+<table class="table  mt-3 animated fadeIn faster animated fadeIn faster">
     <thead class="thead-dark">
       <tr>
         <th scope="col">#</th>
@@ -18,18 +19,24 @@
         <th scope="col">Poder</th>
         <th scope="col">Vivo</th>
         <th scope="col">Tools</th>
-      </tr>
+     </tr>  
     </thead>
+
     <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-        <td>@mdo</td>
-      </tr>
+    <tr *ngFor="let heroe of heroes; let i = index">
+        <th scope="row">{{ i + 1 }}</th>
+        
+        <td>{{ heroe.nombre }}</td>
+        <td>{{ heroe.poder }}</td>
+        <td>{{heroe.vivo}}</td>
+        <td>
+            <label *ngIf="heroe.vivo" class="badge badge-success">Vivo</label>
+            <label *ngIf="!heroe.vivo" class="badge badge-danger">Muerto</label>
+        </td>
+       
+    </tr>
     </tbody>
-</table>
+    </table>
 
 
 <div class="alert alert-warning text-center mt-3">

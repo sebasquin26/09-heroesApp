@@ -4,17 +4,19 @@ import { NgForm } from '@angular/forms';
 import { HeroesService } from '../../services/heroes.service';
 import Swal from 'sweetalert2';
 import { Observable } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-heroe',
   templateUrl: './heroe.component.html',
   styleUrls: ['./heroe.component.css']
 })
-export class HeroeComponent {
+export class HeroeComponent implements OnInit{
+
   heroe = new HeroeModel();
 
 
-  constructor (private heroesService:HeroesService) {}
+  constructor (private heroesService:HeroesService,private route: ActivatedRoute) {}
 
   ngOnInit(){
 

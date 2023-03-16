@@ -1,5 +1,8 @@
 import { Component,OnInit } from '@angular/core';
 import { HeroesService } from '../../services/heroes.service';
+import { HeroeModel } from 'src/app/models/heroe.model';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-heroes',
@@ -8,12 +11,21 @@ import { HeroesService } from '../../services/heroes.service';
 })
 export class HeroesComponent implements OnInit{
 
+  heroes: HeroeModel[] = [];
+  cargando = false;
+  
+
   constructor (private heroesService:HeroesService){}
 
-  ngOnInit(): void {
+  ngOnInit() {
+
+   this.cargando = true;
    this.heroesService.getHeroes()
    .subscribe(resp=> {
-    console.log(resp)
+
+    this.heroes = resp;
+    this.cargando = false;
+    
    });
     
   }
