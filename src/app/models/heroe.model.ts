@@ -2,17 +2,17 @@
 
 export class HeroeModel{
 
-    id: string;
-    nombre:string;
+    id: string |undefined;
+    nombre: string;
     poder: string;
     vivo:boolean;
 
 
     constructor(){
         this.vivo = true;
-        this.id='';
+        this.id = undefined;
         this.nombre='';
         this.poder='';
-
+       
     }
 }
