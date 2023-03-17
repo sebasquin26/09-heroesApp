@@ -13,6 +13,9 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "lodash"
+            ],
             "outputPath": "dist/heroes-app",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -29,11 +32,9 @@
             ],
             "scripts": [
               "node_modules/sweetalert2/dist/sweetalert2.all.min.js"
-            ],
-            
-            "allowedCommonJsDependencies": [
-              "lodash"
             ]
+            
+            
           },
           "configurations": {
             "production": {
