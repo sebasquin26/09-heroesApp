@@ -21,14 +21,36 @@ export class HeroesComponent implements OnInit{
   ngOnInit() {
 
    this.cargando = true;
-   this.heroesService.getHeroes()
-   .subscribe(resp=> {
 
-    this.heroes = resp;
+   this.heroesService.getHeroes()
+   .subscribe(resp=> this.heroes = resp);
     this.cargando = false;
     
-   });
-    
+   }
+
+   borrarHeroe( heroe: HeroeModel, i: number ) {
+
+    Swal.fire({
+      title: '¿Está seguro?',
+      text: `Está seguro que desea borrar a ${ heroe.nombre }`,
+      icon: 'question',
+      showConfirmButton: true,
+      showCancelButton: true
+    }).then( resp => {
+
+      if ( resp.value ) {
+        this.heroes.splice(i, 1);
+        if (typeof heroe.id !== 'undefined')
+        this.heroesService.borrarHeroe( heroe.id ).subscribe();
+      }
+
+    });
+
+
+
   }
 
+
 }
+
+
