@@ -4,6 +4,7 @@ import { HeroeModel } from 'src/app/models/heroe.model';
 import Swal from 'sweetalert2';
 
 
+
 @Component({
   selector: 'app-heroes',
   templateUrl: './heroes.component.html',
@@ -15,7 +16,7 @@ export class HeroesComponent implements OnInit{
   cargando = false;
   
 
-  constructor (private heroesService:HeroesService){}
+  constructor (private heroesService:HeroesService ){}
 
   ngOnInit() {
 
